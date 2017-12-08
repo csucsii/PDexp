@@ -9,7 +9,7 @@ class Introduction(Page):
     def is_displayed(self):
         return self.round_number == 1
 
-    form_model = models.Group
+    form_model = models.Player
     form_fields = ['er1']
 
 class Decision(Page):
@@ -40,7 +40,7 @@ class Final(Page):
     form_model = models.Player
     form_fields = ['final_satisfaction']
 
-    form_model = models.Group
+    form_model = models.Player
     form_fields = ['er2']
 
 page_sequence = [
