@@ -17,7 +17,7 @@ class Decision(Page):
     form_fields = ['cooperate']
 
     def before_next_page(self):
-        self.player.cooperate_bot = random.choice(False,True)
+        self.player.cooperate_bot = random.choice([False,True])
         self.player.set_payoff()
 
 
