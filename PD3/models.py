@@ -30,7 +30,7 @@ class Subsession(BaseSubsession):
     def creating_session(self):
         if self.round_number == 1:
             expgroup = itertools.cycle(['free', 'choice', 'force'])
-            for p in self.get_participants():
+            for p in self.get_players():
                 p.expgroup = next(expgroup)
 
 
