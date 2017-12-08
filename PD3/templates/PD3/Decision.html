@@ -47,3 +47,7 @@
     {% include Constants.instructions_template %}
 
 {% endblock %}
+
+ strategy = models.CharField(
+        choices=['Nice-guy','Nasty-one','Grudger','Copycat'],
+        widget=widgets.RadioSelect()

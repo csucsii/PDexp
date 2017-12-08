@@ -27,10 +27,10 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    def before_session_starts(self):
+    def creating_session(self):
         if self.round_number == 1:
             expgroup = itertools.cycle(['free', 'choice', 'force'])
-            for p in self.get_players():
+            for p in self.get_participants():
                 p.expgroup = next(expgroup)
 
 
@@ -75,4 +75,4 @@ class Player(BasePlayer):
 
     satisfaction = models.PositiveIntegerField(min=1, max=10)
 
-    final_satisfaction = models.PositiveIntegerField(min=1, max=10)
+

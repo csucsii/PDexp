@@ -74,4 +74,3 @@ class Player(BasePlayer):
         self.payoff = payoff_matrix[self.cooperate][self.other_player().cooperate]
 
     satisfaction=models.PositiveIntegerField(min=1, max=10)
-

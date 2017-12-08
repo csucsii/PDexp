@@ -8,7 +8,8 @@
 {% block content %}
 
     <p>
-        Your total payoff at the end of the game is {{ participant.payoff }}.
+        Your total payoff at the end of the game is {{ player.cumulative_payoff }}.
+        Your opponent's payoff is {{ player.bot_cumulative_payoff }}.
 
     </p>
 
