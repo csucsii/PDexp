@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Future expectations
+{% endblock %}
+
+{% block content %}
+
+    
+    {% formfield player.er2 label="What score would you get if you were to play the game again?" %}
+
+    {% next_button %}
+
+    {% include Constants.instructions_template %}
+
+{% endblock %}

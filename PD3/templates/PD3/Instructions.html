@@ -1,0 +1,46 @@
+{% load otree staticfiles %}
+
+<div class="instructions well well-lg">
+
+    <h3 class="panel-sub-heading">
+        Instructions
+    </h3>
+
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'global/matrix.css' %}"/>
+
+    <p>
+        In this study, you will be randomly and anonymously paired with three other
+        participants. You will play three seperate games with each opponent, each consisting 5 rounds.
+
+        During the game each of you simultaneously and privately chooses whether you want to
+        cooperate or cheat.
+        Your payoffs will be determined by the choices of both as below:
+    </p>
+    <p><i>In each cell, the amount to the left is the payoff for
+        you and to the right for the other participant.</i></p>
+
+    <table class='table table-bordered text-center'
+           style='width: auto; margin: auto'>
+        <tr>
+            <th colspan=2 rowspan=2></th>
+            <th colspan=2>The Other Participant</th>
+        </tr>
+        <tr>
+            <th>Cooperate</th>
+            <th>Cheat</th>
+        </tr>
+        <tr>
+            <th rowspan=2><span class="rotate90">You</span></th>
+            <th>Cooperate</th>
+            <td>2,2</td>
+            <td>-1,3</td>
+        </tr>
+        <tr>
+            <th>Cheat</th>
+            <td>3,-1</td>
+            <td>0,0</td>
+        </tr>
+    </table>
+
+</div>

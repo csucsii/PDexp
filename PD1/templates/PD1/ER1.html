@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Expectations
+{% endblock %}
+
+{% block content %}
+
+
+    {% formfield player.er1 label="Please, indicate your expected score in the game!" %}
+
+    {% next_button %}
+
+    {% include Constants.instructions_template %}
+
+{% endblock %}
