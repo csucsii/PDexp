@@ -9,7 +9,7 @@ import itertools
 class Constants(BaseConstants):
     name_in_url = 'PD3'
     players_per_group = None
-    num_rounds = 7
+    num_rounds = 3
 
     instructions_template = 'prisoner/Instructions.html'
 
