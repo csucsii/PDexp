@@ -40,7 +40,7 @@ class Final(Page):
     form_model = models.Player
     form_fields = ['final_satisfaction']
 
-    form_model = models.Player
+    form_model = models.Group
     form_fields = ['er2']
 
 page_sequence = [
