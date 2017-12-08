@@ -71,3 +71,5 @@ class Player(BasePlayer):
 
     satisfaction=models.PositiveIntegerField(min=1, max=10)
 
+    final_satisfaction=models.PositiveIntegerField(min=1, max=10)
+

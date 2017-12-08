@@ -37,13 +37,6 @@ class Final(Page):
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
 
-    def vars_for_template(self):
-        return {
-            'opponent_payoff': self.player.cooperate_bot(participant.payoff),
-        }
-
-    form_model = models.Player
-    form_fields = ['final_satisfaction']
 
     form_model = models.Player
     form_fields = ['er2']
