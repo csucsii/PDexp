@@ -11,7 +11,7 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 3
 
-    instructions_template = 'prisoner/Instructions.html'
+    instructions_template = 'PD3/Instructions.html'
 
     # payoff if 1 player defects and the other cooperates""",
     betray_payoff = c(3)

@@ -27,6 +27,7 @@ class Results(Page):
             'my_decision': self.player.get_cooperate_display(),
             'other_player_decision': self.player.get_cooperate_bot_display(),
             'same_choice': self.player.cooperate == self.player.cooperate_bot,
+            'round_number': self.round_number
         }
 
     form_model = models.Player
