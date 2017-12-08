@@ -40,7 +40,9 @@ class Group(BaseGroup):
     def set_payoffs(self):
         self.cumulative_payoff = sum([p.payoff for p in self.player.in_all_rounds()])
 
-    er1 = models.IntegerField(min=-15, max=45)
+    er1 = models.IntegerField(min=-7, max=21)
+
+    er2 = models.IntegerField(min=-7, max=21)
 
 
 class Player(BasePlayer):
