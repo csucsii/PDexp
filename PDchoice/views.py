@@ -29,8 +29,10 @@ class YourBet(Page):
 
 class DecisionWait(Page):
 
-    def before_session_starts(self):
+    def before_next_page(self):
         self.player.decision()
+        self.player.cooperate_bot = random.choice([False,True])
+        self.player.set_payoff()
 
     def vars_for_template(self):
         return {
@@ -38,10 +40,7 @@ class DecisionWait(Page):
             'my_decision': self.player.decision_label(),
         }
 
-    def before_next_page(self):
-        self.player.decision()
-        self.player.cooperate_bot = random.choice([False,True])
-        self.player.set_payoff()
+
 
 
 class Results(Page):
