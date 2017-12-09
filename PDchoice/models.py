@@ -51,8 +51,28 @@ class Player(BasePlayer):
     def decision(self):
         if self.strategy == 'Nice-guy':
             self.cooperate=True
+
         if self.strategy == 'Nasty-one':
             self.cooperate=False
+
+        if self.strategy=='Grudger':
+            if self.round_number==1:
+                self.cooperate = True
+            else:
+                if self.in_round(self.round_number - 1).cooperate_bot == False:
+                    self.cooperate = False
+                if self.in_round(self.round_number - 1).cooperate == False:
+                    self.player.cooperate = False
+                else self.cooperate=True
+
+        if self.strategy=='Copycat'
+            if Constants.round_number == 1:
+                self.player.cooperate = True
+            else:
+                self.player.cooperate == self.player.in_round(self.round_number - 1).cooperate_bot
+
+
+
 
     def decision_label(self):
         if self.cooperate:
