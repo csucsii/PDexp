@@ -21,7 +21,7 @@ class Strategy(Page):
 
 class DecisionWait(Page):
 
-    def before_session_strats(self):
+    def before_session_starts(self):
         self.player.decision()
 
     def vars_for_template(self):
@@ -31,6 +31,7 @@ class DecisionWait(Page):
         }
 
     def before_next_page(self):
+        self.player.decision()
         self.player.cooperate_bot = random.choice([False,True])
         self.player.set_payoff()
 

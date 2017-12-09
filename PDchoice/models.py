@@ -36,7 +36,7 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    ...
+    pass
 
 
 class Player(BasePlayer):
@@ -48,31 +48,15 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect()
     )
 
+    def my_strategy(self):
+        return self.player.in_round(1).strategy
+
+            #self.player.in_prveious_round(self.round_number - 1).strategy
+
     def decision(self):
-        #Cooperates in every round
+        # Cooperates in every round
         if self.strategy == 'Nice-guy':
-            self.cooperate=True
-        #Cheats in every round
-        if self.strategy == 'Nasty-one':
-            self.cooperate=False
-        #Cooperates in Round 1, and keep cooperating until cheated, then cheats in very round
-        if self.strategy=='Grudger':
-            if self.round_number==1:
-                self.cooperate = True
-            else:
-                if self.in_round(self.round_number - 1).cooperate_bot == False:
-                    self.cooperate = False
-                    if self.in_round(self.round_number - 1).cooperate == False:
-                        self.player.cooperate = False
-                else self.cooperate = True
-        #Cooperates in Round 1, then copies the last move of other player
-        if self.strategy=='Copycat':
-            if Constants.round_number == 1:
-                self.cooperate = True
-            else:
-                self.cooperate == self.in_round(self.round_number - 1).cooperate_bot
-
-
+            self.cooperate = True
 
     def decision_label(self):
         if self.cooperate:
