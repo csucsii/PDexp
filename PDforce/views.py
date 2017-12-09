@@ -13,7 +13,6 @@ class Introduction(Page):
         self.player.strategy=random.choice(Constants.STRATEGY)
 
 class Strategy(Page):
-    timeout_seconds = 120
     def is_displayed(self):
         return self.round_number == 1
 
