@@ -131,6 +131,12 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
+        'name': 'PDforce',
+        'display_name': "PD.force",
+        'num_demo_participants': 1,
+        'app_sequence': ['PDforce'],
+    },
+    {
         'name': 'PDchoice',
         'display_name': "PD.choice",
         'num_demo_participants': 1,

@@ -6,11 +6,11 @@ import itertools
 
 
 class Constants(BaseConstants):
-    name_in_url = 'PD.choice'
+    name_in_url = 'PD.force'
     players_per_group = None
     num_rounds = 3
 
-    instructions_template = 'PDchoice/Instructions.html'
+    instructions_template = 'PDforce/Instructions.html'
 
     # payoff if 1 player defects and the other cooperates""",
     betray_payoff = c(3)
@@ -46,9 +46,7 @@ class Player(BasePlayer):
     cooperate_bot = models.BooleanField(choices=Constants.COOPCHOICES)
 
     strategy = models.CharField(
-        choices=Constants.STRATEGY,
-        default='Nice-guy',
-        widget=widgets.RadioSelect()
+        choices=Constants.STRATEGY
     )
 
     mystrategy=models.CharField()

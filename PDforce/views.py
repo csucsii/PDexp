@@ -9,13 +9,18 @@ class Introduction(Page):
     def is_displayed(self):
         return self.round_number == 1
 
+    def before_next_page(self):
+        self.player.strategy=random.choice(Constants.STRATEGY)
+
 class Strategy(Page):
     timeout_seconds = 120
     def is_displayed(self):
         return self.round_number == 1
 
-    form_model = models.Player
-    form_fields= ['strategy']
+    def vars_for_template(self):
+        return {
+            'force_strategy': self.player.get_strategy_display(),
+        }
 
     def before_next_page(self):
         return self.player.in_previous_rounds()
