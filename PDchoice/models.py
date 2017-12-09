@@ -49,28 +49,28 @@ class Player(BasePlayer):
     )
 
     def decision(self):
+        #Cooperates in every round
         if self.strategy == 'Nice-guy':
             self.cooperate=True
-
+        #Cheats in every round
         if self.strategy == 'Nasty-one':
             self.cooperate=False
-
+        #Cooperates in Round 1, and keep cooperating until cheated, then cheats in very round
         if self.strategy=='Grudger':
             if self.round_number==1:
                 self.cooperate = True
             else:
                 if self.in_round(self.round_number - 1).cooperate_bot == False:
                     self.cooperate = False
-                if self.in_round(self.round_number - 1).cooperate == False:
-                    self.player.cooperate = False
-                else self.cooperate=True
-
-        if self.strategy=='Copycat'
+                    if self.in_round(self.round_number - 1).cooperate == False:
+                        self.player.cooperate = False
+                else self.cooperate = True
+        #Cooperates in Round 1, then copies the last move of other player
+        if self.strategy=='Copycat':
             if Constants.round_number == 1:
-                self.player.cooperate = True
+                self.cooperate = True
             else:
-                self.player.cooperate == self.player.in_round(self.round_number - 1).cooperate_bot
-
+                self.cooperate == self.in_round(self.round_number - 1).cooperate_bot
 
 
 
