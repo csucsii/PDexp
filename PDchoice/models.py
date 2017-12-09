@@ -39,7 +39,8 @@ class Group(BaseGroup):
 
     pass
 
-class Partcipant()
+
+
 class Player(BasePlayer):
     cooperate = models.BooleanField(choices=Constants.COOPCHOICES)
     cooperate_bot = models.BooleanField(choices=Constants.COOPCHOICES)
@@ -58,7 +59,7 @@ class Player(BasePlayer):
 
         # Cheats in every round
         if self.strategy == 'Nasty-one':
-            self.player.cooperate = False
+            self.cooperate = False
 
         # Cooperates in Round 1, and keep cooperating until cheated, then cheats in very round
         if self.strategy == 'Grudger':
@@ -77,7 +78,7 @@ class Player(BasePlayer):
             if Constants.round_number == 1:
                 self.cooperate = True
             else:
-                self.cooperate == self.in_round(self.round_number - 1).cooperate_bot
+                self.cooperate = self.in_round(self.round_number - 1).cooperate_bot
 
 
     def decision_label(self):
