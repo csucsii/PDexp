@@ -6,11 +6,11 @@ import itertools
 
 
 class Constants(BaseConstants):
-    name_in_url = 'PD3'
+    name_in_url = 'PD.choice'
     players_per_group = None
     num_rounds = 3
 
-    instructions_template = 'PD3/Instructions.html'
+    instructions_template = 'PDchoice/Instructions.html'
 
     # payoff if 1 player defects and the other cooperates""",
     betray_payoff = c(3)
@@ -25,7 +25,7 @@ class Constants(BaseConstants):
         [True, 'Cooperate']
     ]
 
-
+    STRATEGY=(['Nice-guy', 'Nasty-one','Grudger','Copycat'])
 
 class Subsession(BaseSubsession):
     def creating_session(self):
@@ -42,6 +42,18 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     cooperate = models.BooleanField(choices=Constants.COOPCHOICES)
     cooperate_bot = models.BooleanField(choices=Constants.COOPCHOICES)
+
+    strategy = models.CharField(
+        choices=Constants.STRATEGY,
+        widget=widgets.RadioSelect()
+    )
+
+    def nice_guy(self):
+        return self.cooperate=True
+
+    def nasty_guy(self):
+        return self.cooperate=False
+
 
     er1 = models.IntegerField(min=-7, max=21)
     er2 = models.IntegerField(min=-7, max=21)

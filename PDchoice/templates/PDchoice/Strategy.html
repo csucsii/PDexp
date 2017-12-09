@@ -1,0 +1,44 @@
+{% extends "global/Page.html" %}
+{% load otree staticfiles %}
+
+{% block title %}
+    Strategy
+{% endblock %}
+
+{% block content %}
+
+    <p>
+       Before you start playing the game you have to choose one of the following strategies.
+       The choosen strategy will detremine your move, i.e. whether you cheat or cooperate, in all seven rounds of the game.
+       Once you made your choice, you can't change your mind.
+
+
+    </p>
+
+    <p><b>Nice-guy</b></p>
+    <p>xxx
+
+    </p>
+
+    <p><b>Nasty-one</b></p>
+    <p>xxx
+
+    </p>
+
+    <p><b>Grudger</b></p>
+    <p>xxx
+
+    </p>
+
+    <p><b>Copycat</b></p>
+    <p>xxx
+
+    </p>
+
+    {% formfield player.strategy label="Please, select a strategy!" %}
+
+    {% next_button %}
+
+    {% include Constants.instructions_template %}
+
+{% endblock %}

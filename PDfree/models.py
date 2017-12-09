@@ -6,11 +6,11 @@ import itertools
 
 
 class Constants(BaseConstants):
-    name_in_url = 'PD3'
+    name_in_url = 'PD.free'
     players_per_group = None
-    num_rounds = 3
+    num_rounds = 7
 
-    instructions_template = 'PD3/Instructions.html'
+    instructions_template = 'PDfree/Instructions.html'
 
     # payoff if 1 player defects and the other cooperates""",
     betray_payoff = c(3)

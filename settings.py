@@ -130,6 +130,18 @@ SESSION_CONFIG_DEFAULTS = {
 }
 
 SESSION_CONFIGS = [
+    {
+        'name': 'PDchoice',
+        'display_name': "PD.choice",
+        'num_demo_participants': 1,
+        'app_sequence': ['PDchoice'],
+    },
+    {
+        'name': 'PDfree',
+        'display_name': "PD.free",
+        'num_demo_participants': 1,
+        'app_sequence': ['PDfree'],
+    },
      {
         'name': 'PD1',
         'display_name': "MP PD",
