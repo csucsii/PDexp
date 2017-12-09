@@ -48,12 +48,16 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect()
     )
 
-    def nice_guy(self):
-        return self.cooperate=True
+    def decision(self):
+        if self.strategy == 'Nice-guy':
+            self.cooperate=True
+        if self.strategy == 'Nasty-one':
+            self.cooperate=False
 
-    def nasty_guy(self):
-        return self.cooperate=False
-
+    def decision_label(self):
+        if self.cooperate:
+            return 'cooperate'
+        return 'cheat'
 
     er1 = models.IntegerField(min=-7, max=21)
     er2 = models.IntegerField(min=-7, max=21)

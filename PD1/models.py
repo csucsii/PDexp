@@ -57,7 +57,7 @@ class Player(BasePlayer):
     def other_player(self):
         return self.get_others_in_group()[0]
 
-    def set_payoff(self) -> object:
+    def set_payoff(self):
         payoff_matrix = {
             True:
                 {

@@ -21,17 +21,13 @@ class Strategy(Page):
 
 class DecisionWait(Page):
 
-    def decision(self):
-        if self.player.strategy == 'Nice-guy':
-            return self.player.nice_guy
-        if self.player.strategy == 'Nasty-one':
-            return self.player.nasty_one
-
+    def before_session_strats(self):
+        self.player.decision()
 
     def vars_for_template(self):
         return {
             'my_strategy': self.player.get_strategy_display(),
-            'my_decision': self.player.get_cooperate_display(),
+            'my_decision': self.player.decision_label(),
         }
 
     def before_next_page(self):
