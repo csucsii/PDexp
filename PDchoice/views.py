@@ -5,23 +5,29 @@ from .models import Constants
 import random
 
 class Introduction(Page):
-    timeout_seconds = 100
+    timeout_seconds = 90
     def is_displayed(self):
         return self.round_number == 1
 
-    form_model = models.Player
-    form_fields = ['er1']
-
 class Strategy(Page):
+    timeout_seconds = 120
     def is_displayed(self):
         return self.round_number == 1
 
     form_model = models.Player
     form_fields= ['strategy']
 
+
+class YourBet(Page):
+    def is_displayed(self):
+        return self.round_number == 1
+    form_model = models.Player
+    form_fields = ['er1']
+
 class DecisionWait(Page):
 
     def before_session_starts(self):
+        self.player.mystrategy=self.player.in_round(1).strategy
         self.player.decision()
 
     def vars_for_template(self):
@@ -59,6 +65,7 @@ class Final(Page):
 page_sequence = [
     Introduction,
     Strategy,
+    YourBet,
     DecisionWait,
     Results,
     Final

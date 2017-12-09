@@ -47,9 +47,11 @@ class Player(BasePlayer):
 
     strategy = models.CharField(
         choices=Constants.STRATEGY,
+        default='Nice-guy',
         widget=widgets.RadioSelect()
     )
 
+    mystrategy=models.CharField()
 
     def decision(self):
 
@@ -82,9 +84,10 @@ class Player(BasePlayer):
 
 
     def decision_label(self):
-        if self.cooperate:
+        if self.cooperate==True:
             return 'cooperate'
-        return 'cheat'
+        else:
+            return 'cheat'
 
     er1 = models.IntegerField(min=-7, max=21)
     er2 = models.IntegerField(min=-7, max=21)
