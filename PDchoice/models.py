@@ -36,9 +36,10 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
+
     pass
 
-
+class Partcipant()
 class Player(BasePlayer):
     cooperate = models.BooleanField(choices=Constants.COOPCHOICES)
     cooperate_bot = models.BooleanField(choices=Constants.COOPCHOICES)
@@ -48,15 +49,36 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect()
     )
 
-    def my_strategy(self):
-        return self.player.in_round(1).strategy
-
-            #self.player.in_prveious_round(self.round_number - 1).strategy
 
     def decision(self):
+
         # Cooperates in every round
         if self.strategy == 'Nice-guy':
             self.cooperate = True
+
+        # Cheats in every round
+        if self.strategy == 'Nasty-one':
+            self.player.cooperate = False
+
+        # Cooperates in Round 1, and keep cooperating until cheated, then cheats in very round
+        if self.strategy == 'Grudger':
+            if self.round_number == 1:
+                self.cooperate = True
+            else:
+                if self.in_round(self.round_number - 1).cooperate_bot == False:
+                    self.cooperate = False
+                    if self.in_round(self.round_number - 1).cooperate == False:
+                        self.player.cooperate = False
+                else:
+                    self.cooperate = True
+
+        # Cooperates in Round 1, then copies the last move of other player
+        if self.strategy == 'Copycat':
+            if Constants.round_number == 1:
+                self.cooperate = True
+            else:
+                self.cooperate == self.in_round(self.round_number - 1).cooperate_bot
+
 
     def decision_label(self):
         if self.cooperate:
@@ -66,6 +88,7 @@ class Player(BasePlayer):
     er1 = models.IntegerField(min=-7, max=21)
     er2 = models.IntegerField(min=-7, max=21)
     bot_payoff= models.IntegerField()
+
     @property
     def cumulative_payoff(self):
         return sum([p.payoff for p in self.in_all_rounds()])
