@@ -27,6 +27,9 @@ class YourBet(Page):
     form_model = models.Player
     form_fields = ['er1']
 
+    def before_next_page(self):
+        self.player.mystrategy=self.player.in_round(1).strategy
+
 class DecisionWait(Page):
 
     def before_next_page(self):
