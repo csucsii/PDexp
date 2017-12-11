@@ -5,7 +5,6 @@ import dj_database_url
 
 import otree.settings
 
-
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # the environment variable OTREE_PRODUCTION controls whether Django runs in
@@ -17,7 +16,6 @@ else:
 
 # don't share this with anybody.
 SECRET_KEY = '{{ secret_key }}'
-
 
 DATABASES = {
     'default': dj_database_url.config(
@@ -51,17 +49,13 @@ ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
-
 # setting for integration with AWS Mturk
 AWS_ACCESS_KEY_ID = environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
 
-
 # e.g. EUR, CAD, GBP, CHF, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = True
-
-
 
 # e.g. en, de, fr, it, ja, zh-hans
 # see: https://docs.djangoproject.com/en/1.9/topics/i18n/#term-language-code
@@ -103,7 +97,6 @@ ROOMS = [
     },
 ]
 
-
 mturk_hit_settings = {
     'keywords': ['bonus', 'study'],
     'title': 'Title for your experiment',
@@ -111,11 +104,10 @@ mturk_hit_settings = {
     'frame_height': 500,
     'preview_template': 'global/MTurkPreview.html',
     'minutes_allotted_per_assignment': 60,
-    'expiration_hours': 7*24, # 7 days
-    #'grant_qualification_id': 'YOUR_QUALIFICATION_ID_HERE',# to prevent retakes
+    'expiration_hours': 7 * 24,  # 7 days
+    # 'grant_qualification_id': 'YOUR_QUALIFICATION_ID_HERE',# to prevent retakes
     'qualification_requirements': []
 }
-
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
 # in SESSION_CONFIGS, except those that explicitly override it.
@@ -136,6 +128,27 @@ SESSION_CONFIGS = [
         'display_name': "PD random treatment",
         'num_demo_participants': 2,
         'app_sequence': ['PD_treatments'],
+    },
+    {
+        'name': 'PD_free',
+        'display_name': "PD FREE treatment",
+        'num_demo_participants': 2,
+        'app_sequence': ['PD_treatments'],
+        'treatment': 'free',
+    },
+    {
+        'name': 'PD_choice',
+        'display_name': "PD CHOICE treatment",
+        'num_demo_participants': 2,
+        'app_sequence': ['PD_treatments'],
+        'treatment': 'choice',
+    },
+    {
+        'name': 'PD_force',
+        'display_name': "PD FORCE treatment",
+        'num_demo_participants': 2,
+        'app_sequence': ['PD_treatments'],
+        'treatment': 'force',
     },
 
 ]

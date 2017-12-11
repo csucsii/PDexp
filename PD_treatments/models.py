@@ -33,11 +33,13 @@ class Subsession(BaseSubsession):
     def creating_session(self):
         if self.round_number == 1:
             if self.session.config.get('treatment'):
-                p.vars['treatment'] = self.session.config.get('treatment')
+                for p in self.session.get_participants():
+                    p.vars['treatment'] = self.session.config.get('treatment')
             else:
                 treatment = itertools.cycle(Constants.treatments)
+                for p in self.session.get_participants():
+                    p.vars['treatment'] = next(treatment)
             for p in self.session.get_participants():
-                p.vars['treatment'] = next(treatment)
                 if p.vars['treatment'] == 'force':
                     p.vars['strategy'] = random.choice(Constants.STRATEGY)
         for p in self.get_players():
